@@ -304,11 +304,19 @@ const timeline = (function () {
             displayHeight = Math.max(displayHeight, 150);
         }
 
+        // Guard: if the CSS grid layout hasn't been computed yet, timelineDiv.width()
+        // returns 0 (making barWidth 0 or negative and producing a blank chart).
+        // Retry once the layout is ready rather than rendering a blank SVG.
+        var width = timelineDiv.width() - 3;
+        if (width <= 0) {
+            setTimeout(function () { timeline.updateTimeline(); }, 200);
+            return;
+        }
+
         var chart = d3.select('#timeline').append('svg')
             .attr('class', 'chart')
             .style('border', '1px solid black')
             .attr('height', displayHeight + 'px');
-        var width = timelineDiv.width() - 3;
         chart.attr('width', width + 'px');
         var barWidth = width / (maxYear - minYear + 1);
         var publicationHeight = height / (maxFrequency + 1);
