@@ -72,8 +72,20 @@ const page = (function () {
     }
 
     function loadAllCSS() {
-        // 常规样式表已在 index.html <head> 中静态声明，无需再动态加载
-        // 仅处理 customStyle（可选的自定义样式）
+        var cssList = [
+            "codemirror/codemirror.css",
+            "tooltipster/tooltipster.css",
+            "tooltipster/tooltipster-survis.css",
+            "style.css",
+            "selector.css",
+            "sparkline.css",
+            "timeline.css",
+            "entries.css"
+        ];
+
+        $.each(cssList, function (i, css) {
+            loadCSS(stylesDir + css);
+        });
         if (customStyle) {
             loadCSS(customStyle);
         }
