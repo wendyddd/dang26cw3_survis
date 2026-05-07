@@ -56,6 +56,12 @@ const timeline = (function () {
         var dataSelector = {};
         var referenceCount = {};
         references = {};
+        // 每次都重置年份范围和刻度，确保在 filteredEntries 变化或首次渲染延迟时始终使用正确数据
+        computeYearRange = true;
+        minYear = 3000;
+        maxYear = 0;
+        maxFrequency = 0;
+        maxReferenceCount = 0;
         computeYearlyData(data, referenceCount, dataSelector);
         for (var year = minYear; year <= maxYear; year++) {
             if (!data[year]) {
