@@ -404,7 +404,7 @@ const selectors = (function() {
     }
 
     function computeTagSimilarity(bib, id, text) {
-        if (!bib.parsedEntries[id]) {
+        if (!bib.parsedEntries || !bib.parsedEntries[id]) {
             return 0.0;
         }
         var tags = bib.parsedEntries[id]['keywords'];
