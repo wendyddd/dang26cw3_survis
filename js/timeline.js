@@ -5,7 +5,7 @@ const timeline = (function () {
     var d3references;
     var dataSelector;
 
-    var height = 100;
+    var height = 160;
 
     var computeYearRange = true;
 
@@ -307,7 +307,7 @@ const timeline = (function () {
         var chart = d3.select('#timeline').append('svg')
             .attr('class', 'chart')
             .style('border', '1px solid black')
-            .attr('height', displayHeight + 'px');
+            .attr('height', (displayHeight + 22) + 'px');
         var width = timelineDiv.width() - 3;
         chart.attr('width', width + 'px');
         var barWidth = width / (maxYear - minYear + 1);
@@ -341,10 +341,10 @@ const timeline = (function () {
                 .attr('height', displayHeight + 2)
                 .style('fill', even == 'Even' ? '#FFFFFF' : '#CCCCCC');
             chart.append('text').attr('class', 'period' + even)
-                .attr('x', x + 1)
-                .attr('y', height / 5).text(intervalYear)
-                .style('font-size', '14pt')
-                .style('fill', even != 'Even' ? '#FFFFFF' : '#CCCCCC');
+                .attr('x', x + 3)
+                .attr('y', height + 16).text(intervalYear)
+                .style('font-size', '11pt')
+                .style('fill', '#555555');
         }
         var frequencyIntervalIndex = 0;
         while (frequencyIntervalIndex < niceIntervals.length - 1 && maxFrequency / niceIntervals[frequencyIntervalIndex] > maxFrequencyIntervals) {
@@ -359,7 +359,7 @@ const timeline = (function () {
                 .attr('x2', width)
                 .attr('y2', y)
                 .style('stroke', 'black')
-                .attr('shape-rendering', 'crispEdges')
+                // .attr('shape-rendering', 'crispEdges')
                 .attr('stroke-opacity', 0.15)
                 .style('stroke-width', '1px');
             chart.append('text')
@@ -426,7 +426,7 @@ const timeline = (function () {
                     });
                     chart.selectAll('svg').data(d3dataSelector).enter().append('rect')
                         .attr('class', 'bar fill')
-                        .attr('shape-rendering', 'crispEdges')
+                        // .attr('shape-rendering', 'crispEdges')
                         .style('fill', selectorColors[i])
                         .attr('x', function (d) {
                             return 0.5 + (d.key - minYear) * barWidth + j * barWidthSelector;
@@ -502,7 +502,7 @@ const timeline = (function () {
                 value["colorOutgoing"].forEach(function (color) {
                     chart.append('rect')
                         .style('fill', color)
-                        .attr('shape-rendering', 'crispEdges')
+                        // .attr('shape-rendering', 'crispEdges')
                         .attr('y', y)
                         .attr('x', x)
                         .attr('height', h)
@@ -527,7 +527,7 @@ const timeline = (function () {
                 //             + value["colorIncoming"].length);
                 value["colorIncoming"].forEach(function (color) {
                     chart.append('rect')
-                        .attr('shape-rendering', 'crispEdges')
+                        // .attr('shape-rendering', 'crispEdges')
                         .style('fill', color)
                         .attr('y', y)
                         .attr('x', x)
