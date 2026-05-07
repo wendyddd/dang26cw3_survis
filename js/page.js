@@ -14,10 +14,10 @@ const page = (function () {
         },
         update: function (scrollToTop) {
             $('.tooltipstered').tooltipster('hide');
-            tags.updateTagClouds();
             selectors.updateSelectors();
             references.updateReferences();
             stats.updateStats();
+            tags.updateTagClouds();
             clustering.updateClusters();
             entryLayout.updateEntryList();
             setTimeout(
