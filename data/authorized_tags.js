@@ -11,13 +11,13 @@ const userDefinedAuthorizedTags = {
     "type:framework": {
         "description": "framework paper"
     },
-    "category:storage-admission": {
+    "category:Storage": {
         "description": "storage and admission"
     },
-    "category:management-update": {
+    "category:Management": {
         "description": "management and update"
     },
-    "category:retrieval-utilization": {
+    "category:Retrieval": {
         "description": "retrieval and utilization"
     }
 };
